@@ -8,12 +8,12 @@ function handlePreFlightRequest(): Response {
   });
 }
 
-async function handler(_req: Request, encodedParam: string): Promise<Response> {
+async function handler(_req: Request): Promise<Response> {
   if (_req.method == "OPTIONS") {
     handlePreFlightRequest();
   }
 
-  const urlParam = decodeURIComponent(encodedParam);
+  const urlParam = decodeURIComponent("word");
   const headers = new Headers();
   headers.append("Content-Type", "application/json");
 
