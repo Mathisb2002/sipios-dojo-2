@@ -14,7 +14,7 @@ async function handler(_req: Request): Promise<Response> {
   }
 
   const urlParam = decodeURIComponent("word");
-  console.log(urlParam);
+  console.log("test url", urlParam);
   const headers = new Headers();
   headers.append("Content-Type", "application/json");
 
