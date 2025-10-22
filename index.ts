@@ -12,9 +12,8 @@ async function handler(_req: Request): Promise<Response> {
   if (_req.method == "OPTIONS") {
     handlePreFlightRequest();
   }
-
-  const urlParam = decodeURIComponent("word");
-  console.log("test url", urlParam);
+  const url = new URL(_req.url);
+  const urlParam = url.searchParams.get("word")||"";
   const headers = new Headers();
   headers.append("Content-Type", "application/json");
 
