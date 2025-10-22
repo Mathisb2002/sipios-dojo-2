@@ -8,17 +8,18 @@ function handlePreFlightRequest(): Response {
   });
 }
 
-async function handler(_req: Request): Promise<Response> {
+async function handler(_req: Request, encodedParam: string): Promise<Response> {
   if (_req.method == "OPTIONS") {
     handlePreFlightRequest();
   }
 
+  const urlParam = decodeURIComponent(encodedParam);
   const headers = new Headers();
   headers.append("Content-Type", "application/json");
 
   const similarityRequestBody = JSON.stringify({
     word1: "centrale",
-    word2: "supelec",
+    word2: urlParam,
   });
 
   const requestOptions = {
